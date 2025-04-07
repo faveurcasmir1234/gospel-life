@@ -1,366 +1,137 @@
-<!DOCTYPE html>
-<html lang="fr">
+<!DOCTYPE html><html lang="fr">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Gospel Life - Bibliothèque Chrétienne</title>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gospel Life - God's Plan</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
   <style>
-    * {
-      margin: 0; padding: 0; box-sizing: border-box;
-    }
     body {
-      font-family: 'Poppins', sans-serif;
-      background: #fff;
-      color: #333;
-      line-height: 1.6;
+      background-color: #f8f9fa;
+      font-family: 'Segoe UI', sans-serif;
     }
-    header {
-      background: #003B8B;
-      color: white;
-      padding: 1rem;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-    header h1 {
-      font-size: 1.5rem;
-    }
-    nav a {
-      color: white;
-      margin-left: 1rem;
-      text-decoration: none;
-      font-weight: bold;
+    .navbar-brand img {
+      height: 40px;
     }
     .hero {
-      text-align: center;
-      padding: 3rem 1rem;
-      background: #FFCC70;
-      color: #003B8B;
-    }
-    .hero h2 {
-      font-size: 2rem;
-      margin-bottom: 1rem;
-    }
-    .hero p {
-      font-size: 1.1rem;
-      margin-bottom: 1.5rem;
-    }
-    .btn {
-      background: #003B8B;
+      background: linear-gradient(to right, #0052D4, #65C7F7);
       color: white;
-      padding: 0.8rem 1.5rem;
-      border: none;
-      border-radius: 8px;
-      font-weight: bold;
+      padding: 80px 20px;
+      text-align: center;
+    }
+    .stat-box {
+      background-color: white;
+      border-radius: 12px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      padding: 20px;
+      text-align: center;
+    }
+    .language-switch {
       cursor: pointer;
     }
-    .stats {
-      display: flex;
-      justify-content: space-around;
-      background: #f5f5f5;
-      padding: 2rem 1rem;
-    }
-    .stat {
-      text-align: center;
-    }
-    .stat h3 {
-      font-size: 2rem;
-      color: #FF9800;
-    }
-    footer {
-      background: #003B8B;
-      color: white;
-      text-align: center;
-      padding: 1rem;
-      font-size: 0.9rem;
+  </style>
+</head>
+<body>
+  <nav class="navbar navbar-expand-lg navbar-light bg-light shadow-sm">
+    <div class="container">
+      <a class="navbar-brand" href="#">
+        <img src="logo.png" alt="GL - God's Plan">
+        Gospel Life
+      </a>
+      <div class="language-switch ms-auto" onclick="switchLang()">FR / EN</div>
+    </div>
+  </nav>  <section class="hero">
+    <h1 id="main-title">Bienvenue sur Gospel Life</h1>
+    <p id="main-desc">La bibliothèque musicale chrétienne pour nourrir ta foi</p>
+    <a href="#cantiques" class="btn btn-warning">Explorer les Cantiques</a>
+  </section>  <div class="container my-5">
+    <div class="row g-4">
+      <div class="col-md-4">
+        <div class="stat-box">
+          <h3>+120</h3>
+          <p id="cantique-label">Cantiques disponibles</p>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="stat-box">
+          <h3>+50</h3>
+          <p id="teaching-label">Enseignements bibliques</p>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="stat-box">
+          <h3>3</h3>
+          <p id="lang-label">Langues supportées</p>
+        </div>
+      </div>
+    </div>
+  </div>  <!-- Section Cantiques -->  <div class="container" id="cantiques">
+    <h2 class="mb-4" id="cantique-section-title">Cantiques</h2>
+    <input type="text" class="form-control mb-3" placeholder="Rechercher..." onkeyup="searchCantique(this.value)">
+    <div class="list-group" id="cantique-list">
+      <div class="list-group-item">
+        <h5>Amazing Grace</h5>
+        <button class="btn btn-sm btn-outline-primary" onclick="playAudio('amazing.mp3')">Écouter</button>
+      </div>
+      <div class="list-group-item">
+        <h5>Je louerai l'Éternel</h5>
+        <button class="btn btn-sm btn-outline-primary" onclick="playAudio('louange.mp3')">Écouter</button>
+      </div>
+      <!-- Ajoute d'autres ici -->
+    </div>
+  </div>  <!-- Lecteur Audio -->  <div class="container my-4 text-center">
+    <audio id="audioPlayer" controls style="width: 100%; max-width: 600px;"></audio>
+  </div>  <!-- Section Enseignements -->  <div class="container mt-5">
+    <h2 class="mb-4" id="teaching-section-title">Enseignements</h2>
+    <div class="card mb-3">
+      <div class="card-body">
+        <h5 class="card-title">La Foi qui Sauve</h5>
+        <audio controls src="foi_sauve.mp3"></audio>
+      </div>
+    </div>
+    <div class="card mb-3">
+      <div class="card-body">
+        <h5 class="card-title">Le Saint-Esprit</h5>
+        <audio controls src="saint_esprit.mp3"></audio>
+      </div>
+    </div>
+  </div>  <script>
+    function playAudio(src) {
+      const player = document.getElementById("audioPlayer");
+      player.src = src;
+      player.play();
     }
 
-    @media (max-width: 600px) {
-      .stats {
-        flex-direction: column;
-        align-items: center;
+    function searchCantique(query) {
+      const items = document.querySelectorAll('#cantique-list .list-group-item');
+      items.forEach(item => {
+        const text = item.innerText.toLowerCase();
+        item.style.display = text.includes(query.toLowerCase()) ? '' : 'none';
+      });
+    }
+
+    function switchLang() {
+      const fr = {
+        'main-title': 'Bienvenue sur Gospel Life',
+        'main-desc': 'La bibliothèque musicale chrétienne pour nourrir ta foi',
+        'cantique-label': 'Cantiques disponibles',
+        'teaching-label': 'Enseignements bibliques',
+        'lang-label': 'Langues supportées',
+        'cantique-section-title': 'Cantiques',
+        'teaching-section-title': 'Enseignements'
+      };
+      const en = {
+        'main-title': 'Welcome to Gospel Life',
+        'main-desc': 'The Christian music library to grow your faith',
+        'cantique-label': 'Available Hymns',
+        'teaching-label': 'Bible Teachings',
+        'lang-label': 'Supported Languages',
+        'cantique-section-title': 'Hymns',
+        'teaching-section-title': 'Teachings'
+      };
+      const current = document.getElementById('main-title').innerText.includes('Bienvenue') ? en : fr;
+      for (let id in current) {
+        document.getElementById(id).innerText = current[id];
       }
-      .stat {
-        margin-bottom: 1rem;
-      }
     }
-  </style>
-</head>
-<body>
-
-  <header>
-    <h1>GL - God's Plan</h1>
-    <nav>
-      <a href="#">Accueil</a>
-      <a href="#">Cantiques</a>
-      <a href="#">Enseignements</a>
-      <a href="#">Langues</a>
-    </nav>
-  </header>
-
-  <section class="hero">
-    <h2>Bienvenue sur Gospel Life</h2>
-    <p>"Louez l'Éternel, car il est bon, car sa miséricorde dure à toujours !" - Psaume 136:1</p>
-    <button class="btn" onclick="window.location.href='#'">Explorer les Cantiques</button>
-  </section>
-
-  <section class="stats">
-    <div class="stat">
-      <h3>120+</h3>
-      <p>Cantiques</p>
-    </div>
-    <div class="stat">
-      <h3>50+</h3>
-      <p>Enseignements</p>
-    </div>
-    <div class="stat">
-      <h3>3</h3>
-      <p>Langues</p>
-    </div>
-  </section>
-
-  <footer>
-    &copy; 2025 Gospel Life - Tous droits réservés. Inspiré par l'Esprit de Dieu.
-  </footer>
-
-</body>
-</html><!DOCTYPE html><html lang="fr">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Gospel Life - Enseignements</title>
-  <style>
-    body {
-      margin: 0;
-      font-family: 'Segoe UI', sans-serif;
-      background-color: #ffffff;
-      color: #333;
-    }
-    header {
-      background-color: #004080;
-      padding: 1rem 2rem;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-    }
-    .logo {
-      display: flex;
-      align-items: center;
-      gap: 0.75rem;
-    }
-    .logo img {
-      height: 50px;
-    }
-    .nav {
-      display: flex;
-      gap: 1.5rem;
-    }
-    .nav a {
-      color: white;
-      text-decoration: none;
-      font-weight: bold;
-    }
-    .main {
-      padding: 2rem;
-      max-width: 1000px;
-      margin: auto;
-    }
-    h1 {
-      text-align: center;
-      color: #004080;
-    }
-    .teaching-list {
-      display: flex;
-      flex-direction: column;
-      gap: 1rem;
-    }
-    .teaching {
-      padding: 1rem;
-      border: 1px solid #eee;
-      border-radius: 8px;
-      background-color: #f9f9f9;
-    }
-    .teaching h3 {
-      margin: 0 0 0.5rem;
-      color: #004080;
-    }
-    .teaching small {
-      color: #777;
-    }
-    .format {
-      display: inline-block;
-      padding: 0.2rem 0.5rem;
-      border-radius: 4px;
-      background-color: #ffaa00;
-      color: white;
-      font-size: 0.8rem;
-      margin-left: 0.5rem;
-    }
-    footer {
-      background-color: #f5f5f5;
-      text-align: center;
-      padding: 1rem;
-      font-size: 0.9rem;
-      color: #777;
-    }
-  </style>
-</head>
-<body>
-  <header>
-    <div class="logo">
-      <img src="logo_gospel_life.png" alt="Logo GL" />
-      <span style="color: white; font-size: 1.2rem; font-weight: bold;">Gospel Life</span>
-    </div>
-    <nav class="nav">
-      <a href="index.html">Accueil</a>
-      <a href="cantiques.html">Cantiques</a>
-      <a href="#">Paroles</a>
-      <a href="#">Enseignements</a>
-      <a href="#">À propos</a>
-    </nav>
-  </header>
-  <main class="main">
-    <h1>Enseignements Bibliques</h1>
-    <div class="teaching-list">
-      <div class="teaching">
-        <h3>Marcher selon l'Esprit <span class="format">Audio</span></h3>
-        <small>Langue : Français | <a href="#">Écouter</a></small>
-      </div>
-      <div class="teaching">
-        <h3>Faith in Trials <span class="format">Vidéo</span></h3>
-        <small>Langue : Anglais | <a href="#">Voir</a></small>
-      </div>
-      <div class="teaching">
-        <h3>Kufuata Neno la Mungu <span class="format">Texte</span></h3>
-        <small>Langue : Swahili | <a href="#">Lire</a></small>
-      </div>
-    </div>
-  </main>
-  <footer>
-    © 2025 Gospel Life — L'Évangile par le chant. Tous droits réservés.
-  </footer>
-</body>
-</html><!DOCTYPE html><html lang="fr">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Gospel Life - Cantiques</title>
-  <link rel="stylesheet" href="styles.css" />
-  <style>
-    body {
-      margin: 0;
-      font-family: 'Segoe UI', sans-serif;
-      background-color: #ffffff;
-      color: #333;
-    }
-    header {
-      background-color: #004080;
-      padding: 1rem 2rem;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-    }
-    .logo {
-      display: flex;
-      align-items: center;
-      gap: 0.75rem;
-    }
-    .logo img {
-      height: 50px;
-    }
-    .nav {
-      display: flex;
-      gap: 1.5rem;
-    }
-    .nav a {
-      color: white;
-      text-decoration: none;
-      font-weight: bold;
-    }
-    .main {
-      padding: 2rem;
-      max-width: 1000px;
-      margin: auto;
-    }
-    h1 {
-      text-align: center;
-      color: #004080;
-    }
-    .search {
-      text-align: center;
-      margin: 1rem 0 2rem;
-    }
-    .search input {
-      padding: 0.5rem;
-      width: 60%;
-      max-width: 400px;
-      border: 1px solid #ccc;
-      border-radius: 6px;
-    }
-    .chant-list {
-      display: flex;
-      flex-direction: column;
-      gap: 1rem;
-    }
-    .chant {
-      padding: 1rem;
-      border: 1px solid #eee;
-      border-radius: 8px;
-      background-color: #f9f9f9;
-    }
-    .chant h3 {
-      margin: 0;
-      color: #004080;
-    }
-    .chant small {
-      color: #777;
-    }
-    footer {
-      background-color: #f5f5f5;
-      text-align: center;
-      padding: 1rem;
-      font-size: 0.9rem;
-      color: #777;
-    }
-  </style>
-</head>
-<body>
-  <header>
-    <div class="logo">
-      <img src="logo_gospel_life.png" alt="Logo GL" />
-      <span style="color: white; font-size: 1.2rem; font-weight: bold;">Gospel Life</span>
-    </div>
-    <nav class="nav">
-      <a href="index.html">Accueil</a>
-      <a href="#">Cantiques</a>
-      <a href="#">Paroles</a>
-      <a href="#">Enseignements</a>
-      <a href="#">À propos</a>
-    </nav>
-  </header>
-  <main class="main">
-    <h1>Liste des Cantiques</h1>
-    <div class="search">
-      <input type="text" placeholder="Rechercher un cantique..." />
-    </div>
-    <div class="chant-list">
-      <div class="chant">
-        <h3>Viens à Jésus</h3>
-        <small>Langue : Français | <a href="#">Paroles</a></small>
-      </div>
-      <div class="chant">
-        <h3>Come to the Lord</h3>
-        <small>Langue : Anglais | <a href="#">Lyrics</a></small>
-      </div>
-      <div class="chant">
-        <h3>Tumuamini Yesu</h3>
-        <small>Langue : Swahili | <a href="#">Maneno</a></small>
-      </div>
-    </div>
-  </main>
-  <footer>
-    © 2025 Gospel Life — L'Évangile par le chant. Tous droits réservés.
-  </footer>
-</body>
+  </script></body>
 </html>
