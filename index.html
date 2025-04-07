@@ -1,49 +1,72 @@
-<!DOCTYPE html>
-<html lang="fr">
+<!DOCTYPE html><html lang="fr">
 <head>
-  <meta charset="UTF-8">
-  <title>Gospel Life</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Gospel Life - Accueil</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
   <style>
-    body {
-      font-family: Arial, sans-serif;
-      background: #f0f4ff;
-      color: #333;
-      text-align: center;
-      padding: 50px;
-    }
-    h1 {
-      color: #2a5bd7;
-    }
-    p {
-      font-size: 18px;
-    }
-    .button {
-      margin-top: 20px;
-      padding: 10px 20px;
-      background-color: #f8a432;
-      color: white;
-      border: none;
-      border-radius: 8px;
-      cursor: pointer;
-      font-size: 16px;
-    }
-    .button:hover {
-      background-color: #e0871b;
-    }
+    body { margin: 0; font-family: 'Segoe UI', sans-serif; background: #f9f9f9; color: #222; }
+    header { background: linear-gradient(to right, #007BFF, #00BFFF); color: white; padding: 2rem; text-align: center; }
+    .hero { display: flex; flex-direction: column; align-items: center; justify-content: center; background: white; padding: 2rem; }
+    .hero h1 { font-size: 2.5rem; margin-bottom: 0.5rem; color: #007BFF; }
+    .hero p { font-size: 1.2rem; color: #333; }
+    .stats { display: flex; justify-content: space-around; background: #fffbe6; padding: 2rem 1rem; text-align: center; }
+    .stat { flex: 1; padding: 1rem; }
+    .stat h2 { color: #FFA500; font-size: 2rem; }
+    .carousel { display: flex; overflow-x: auto; gap: 1rem; padding: 2rem; background: #f0f8ff; }
+    .card { background: white; border-radius: 10px; padding: 1rem; box-shadow: 0 2px 6px rgba(0,0,0,0.1); min-width: 250px; }
+    .card img { width: 100%; border-radius: 8px; }
+    .devotion { background: #fff; padding: 2rem; text-align: center; }
+    footer { background: #222; color: white; padding: 1rem; text-align: center; }
+    button { background: #FFA500; color: white; border: none; padding: 0.5rem 1rem; border-radius: 5px; cursor: pointer; }
   </style>
 </head>
 <body>
-  <h1>Bienvenue sur Gospel Life !</h1>
-  <p>Un espace de cantiques, paroles et enseignements bibliques.</p>
-  <button class="button" onclick="alert('Dieu te bénisse !')">Découvrir</button>
+  <header>
+    <h1>Gospel Life</h1>
+    <p>Sous la direction de notre Seigneur Jésus... Amen</p>
+  </header>  <section class="hero">
+    <h1>"Que tout ce qui respire loue l'Éternel"</h1>
+    <p>Psaume 150:6</p>
+    <button>Explorer les Cantiques</button>
+  </section>  <section class="stats">
+    <div class="stat">
+      <h2>+120</h2>
+      <p>Cantiques</p>
+    </div>
+    <div class="stat">
+      <h2>+50</h2>
+      <p>Enseignements</p>
+    </div>
+    <div class="stat">
+      <h2>3</h2>
+      <p>Langues</p>
+    </div>
+    <div class="stat">
+      <h2>+10 000</h2>
+      <p>Écoutes</p>
+    </div>
+  </section>  <section class="carousel">
+    <div class="card">
+      <img src="https://via.placeholder.com/300x200?text=Chant+1" alt="Chant 1" />
+      <h3>Louange Éternelle</h3>
+      <button>Écouter</button>
+    </div>
+    <div class="card">
+      <img src="https://via.placeholder.com/300x200?text=Chant+2" alt="Chant 2" />
+      <h3>Adoration Pure</h3>
+      <button>Voir les paroles</button>
+    </div>
+    <div class="card">
+      <img src="https://via.placeholder.com/300x200?text=Chant+3" alt="Chant 3" />
+      <h3>Espoir en Christ</h3>
+      <button>Écouter</button>
+    </div>
+  </section>  <section class="devotion">
+    <h2>Pensée du jour</h2>
+    <p>"Car Dieu a tant aimé le monde qu’il a donné son Fils unique..." – Jean 3:16</p>
+  </section>  <footer>
+    <p>&copy; 2025 Gospel Life. GL - God's Plan</p>
+  </footer>
 </body>
-</html><!DOCTYPE html>
-<html>
-  <head>
-    <title>Mon site GitHub Pages</title>
-  </head>
-  <body>
-    <h1>Bienvenue sur mon site !</h1>
-    <p>Ce site est hébergé par GitHub Pages.</p>
-  </body>
 </html>
